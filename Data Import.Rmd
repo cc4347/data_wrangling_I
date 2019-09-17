@@ -34,6 +34,7 @@ skimr::skim(pups_data)
 ```
 
 ##play with column parsing
+
 ```{r}
 litters_data = read_csv(
   file = "./data_import_examples/FAS_litters.csv")
@@ -51,9 +52,17 @@ view(litters_data)
 ```
 
 ##Read in an excel file...
+
 ```{r}
 mlb11_data = read_excel(path = "./data_import_examples/mlb11.xlsx")
 view(mlb11_data)
 ```
 
+
+##Read in SAS
+
+```{r}
+pulse_data = haven::read_sas("./data_import_examples/public_pulse_data.sas7bdat")
+view(pulse_data)
+```
 
