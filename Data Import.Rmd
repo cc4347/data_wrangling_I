@@ -9,6 +9,7 @@ output: github_document
 knitr::opts_chunk$set(echo = TRUE)
 
 library(tidyverse)
+library(readxl)
 ```
 
 #never use absolute paths; use relative paths instead
@@ -49,6 +50,10 @@ litters_data = read_csv(
 view(litters_data)
 ```
 
-##Read in an excell file...
+##Read in an excel file...
+```{r}
+mlb11_data = read_excel(path = "./data_import_examples/mlb11.xlsx")
+view(mlb11_data)
+```
 
 
