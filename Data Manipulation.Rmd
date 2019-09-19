@@ -66,3 +66,39 @@ pulse_data = haven::read_sas("./data_import_examples/public_pulse_data.sas7bdat"
 view(pulse_data)
 ```
 
+##Import datasets
+
+```{r}
+library(tidyverse)
+litters_data = read_csv("./data_import_examples/FAS_litters.csv",
+  col_types = "ccddiiii")
+  litters_data = janitor::clean_names(litters_data)
+pups_data = read_csv("./data_import_examples/FAS_pups.csv",
+  col_types = "ciiiii")
+  pups_data = janitor::clean_names(pups_data)
+```
+
+##Selecting
+
+```{r}
+select(litters_data, group, litter_number, gd0_weight, pups_born_alive)
+
+select(litters_data, litter_number, gd0_weight, starts_with("pups"))
+
+select(litters_data, litter_number, group, gd0_weight)
+
+select(litters_data, litter_number, group, everything())
+#those two variables shifted to be the first 2 columns, then all other variables follow
+
+select(litters_data, -group)
+#removing a column
+
+select(litters_data, litter_number, gd0_weight:pups_born_alive)
+
+select(litters_data, GROUP = group, litter_number)
+#changing variable names
+
+rename(litters_data, GROUP = group)
+```
+
+##Filtering !!!!!
