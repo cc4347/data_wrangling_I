@@ -131,3 +131,27 @@ drop_na(litters_data, gd0_weight)
 #drop na in specific variable
 ```
 
+##Mutate
+
+```{r}
+mutate(
+  litters_data,
+  we_gain = gd18_weight - gd0_weight,
+  #make new variable base on existing
+  group = str_to_lower(group))
+  #overwrite existing variables in dataset
+```
+
+##Arrange
+
+```{r}
+arrange(litters_data, pups_born_alive)
+#ordered the dataset according to the number of pups born alive
+
+arrange(litters_data, desc(pups_born_alive))
+#arrange descending
+
+arrange(litters_data, pups_born_alive, gd0_weight)
+#first arranges by pups born alive variable, then if you have multiple pups with the same number in that variable, it will then arrange by gd0_weight
+```
+
