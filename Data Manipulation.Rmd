@@ -155,3 +155,25 @@ arrange(litters_data, pups_born_alive, gd0_weight)
 #first arranges by pups born alive variable, then if you have multiple pups with the same number in that variable, it will then arrange by gd0_weight
 ```
 
+## pipe ...
+
+Create a collection of commands
+
+```{r}
+litters_data =
+  read_csv("./data_import_examples/FAS_litters.csv") %>% 
+  #hot key for %>% is command shift M
+  janitor::clean_names() %>% 
+  select(-pups_survive) %>% 
+  mutate(
+    wt_gain = gd18_weight - gd0_weight,
+    group = str_to_lower(group)) %>% 
+  drop_na(gd0_weight)
+```
+
+```{r, eval = FALSE}
+litters_data %>% view()
+
+litters_data %>% pull(gd0_weight) %>% mean
+```
+
